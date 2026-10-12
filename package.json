@@ -1,0 +1,14 @@
+{
+  "name": "skycast-weather-app",
+  "version": "1.0.0",
+  "description": "Weather application built with pure Node.js (no frameworks) - current conditions and 5-day forecast by city search.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

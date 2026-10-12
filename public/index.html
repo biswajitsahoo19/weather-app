@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skycast — Weather Forecast</title>
+  <meta name="description" content="Search any city for current weather conditions and a 5-day forecast." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛅</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-theme="clear-day">
+  <div class="bg" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-logo">⛅</span>
+        <span class="brand-name">Skycast</span>
+      </div>
+      <div class="unit-toggle" role="group" aria-label="Temperature units">
+        <button type="button" class="unit-btn active" data-units="metric">°C</button>
+        <button type="button" class="unit-btn" data-units="imperial">°F</button>
+      </div>
+    </header>
+
+    <form id="search-form" class="search glass" autocomplete="off" role="search">
+      <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="city-input" type="text" name="city" placeholder="Search for a city, e.g. Bhubaneswar" maxlength="80" aria-label="City name" required />
+      <button id="search-btn" type="submit">Search</button>
+    </form>
+
+    <div id="recent" class="recent" aria-label="Recent searches"></div>
+
+    <section id="status" class="status" aria-live="polite" hidden></section>
+
+    <section id="weather" class="weather" hidden>
+      <article class="current glass">
+        <div class="current-main">
+          <div class="place">
+            <h1 id="place-name">—</h1>
+            <p id="place-sub" class="muted">—</p>
+            <p id="local-time" class="muted small">—</p>
+          </div>
+          <div class="temp-block">
+            <div id="current-icon" class="current-icon" aria-hidden="true">☀️</div>
+            <div>
+              <div class="temp"><span id="current-temp">--</span><sup id="temp-unit">°C</sup></div>
+              <div id="current-condition" class="condition">—</div>
+              <div class="muted">Feels like <span id="feels-like">--</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="detail"><span class="detail-icon">💧</span><div><div class="detail-label">Humidity</div><div id="d-humidity" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">💨</span><div><div class="detail-label">Wind</div><div id="d-wind" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">🧭</span><div><div class="detail-label">Pressure</div><div id="d-pressure" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">☁️</span><div><div class="detail-label">Cloud cover</div><div id="d-cloud" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">🌅</span><div><div class="detail-label">Sunrise</div><div id="d-sunrise" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">🌇</span><div><div class="detail-label">Sunset</div><div id="d-sunset" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">🕶️</span><div><div class="detail-label">UV index</div><div id="d-uv" class="detail-value">--</div></div></div>
+          <div class="detail"><span class="detail-icon">🌧️</span><div><div class="detail-label">Precipitation</div><div id="d-precip" class="detail-value">--</div></div></div>
+        </div>
+      </article>
+
+      <section class="forecast-section">
+        <h2 class="section-title">5-Day Forecast</h2>
+        <div id="forecast" class="forecast"></div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+    </footer>
+  </main>
+
+  <script src="/js/app.js" defer></script>
+</body>
+</html>
